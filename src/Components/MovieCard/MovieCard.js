@@ -1,7 +1,5 @@
-const MovieCard = ({movie: { imdbID, Year, Poster, Title, Type }}) => {
-
-
-  
+// destructuring the movie object
+const MovieCard = ({ movie: { imdbID, Year, Poster, Title, Type } }) => {
   return (
     <>
       <div className="movie" key={imdbID}>
@@ -11,7 +9,7 @@ const MovieCard = ({movie: { imdbID, Year, Poster, Title, Type }}) => {
 
         <div>
           <img
-            src={Poster !== 'N/A' ? Poster : "https://via.placeholder.com/400"}
+            src={Poster !== "N/A" ? Poster : "https://via.placeholder.com/400"}
             alt="{Title}"
           />
         </div>
