@@ -14,7 +14,8 @@ const Hero = () => {
   // creating a state to store movies data;
   const [movies, setMovies] = useState([]);
 
-  
+  // creating a state for search movies
+  const [searchMovies, setSearchMovies] = useState(""); 
 
   // fetching movie data using axios 
   const fetchMovies = async (title) => {
@@ -33,14 +34,22 @@ const Hero = () => {
     fetchMovies();
   },[]);
 
- 
+ const fetchMovieHandler = (e) =>{
+  setSearchMovies(e.target.value);
+  
+ };
+
+ const searchMovieHandler =() =>{
+  fetchMovies(searchMovies);
+  setSearchMovies('');
+ }
   return (
     <div className="app">
       <h1>MovieW</h1>
 
       <div className="search">
-        <input value="" onChange="" placeholder="Search for movies" />
-        <img src={SearchIcon} alt="search" onClick="" />
+        <input value={searchMovies} onChange={fetchMovieHandler} placeholder="Search for movies" />
+        <img src={SearchIcon} alt="search" onClick={searchMovieHandler} />
       </div>
     
       {movies?.length > 0 ? (
